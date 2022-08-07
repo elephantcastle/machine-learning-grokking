@@ -1,5 +1,9 @@
 import numpy as np
 from matplotlib import pyplot
+from six import StringIO
+from IPython.display import Image  
+from sklearn.tree import export_graphviz
+import pydotplus
 
 # Some functions to plot our points and draw the lines
 def plot_points(features, labels, fix_margins=True):
@@ -47,10 +51,6 @@ def plot_model(X, y, model, fix_margins=True):
     pyplot.show()
 
 def display_tree(dt):
-    from sklearn.externals.six import StringIO  
-    from IPython.display import Image  
-    from sklearn.tree import export_graphviz
-    import pydotplus
     dot_data = StringIO()
     export_graphviz(dt, out_file=dot_data,  
                     filled=True, rounded=True,
